@@ -1,0 +1,18 @@
+var mimeType = requestResponse.mimeType();
+
+return requestResponse.request().isInScope()
+ && requestResponse.request().method().equals("POST")
+ && (requestResponse.request().hasParameters(HttpParameterType.URL) || requestResponse.request().hasParameters(HttpParameterType.BODY))
+ && mimeType != MimeType.CSS
+ && mimeType != MimeType.IMAGE_UNKNOWN
+ && mimeType != MimeType.IMAGE_JPEG
+ && mimeType != MimeType.IMAGE_GIF
+ && mimeType != MimeType.IMAGE_PNG
+ && mimeType != MimeType.IMAGE_BMP
+ && mimeType != MimeType.IMAGE_TIFF
+ && mimeType != MimeType.UNRECOGNIZED
+ && mimeType != MimeType.SOUND
+ && mimeType != MimeType.VIDEO
+ && mimeType != MimeType.FONT_WOFF
+ && mimeType != MimeType.FONT_WOFF2
+ && mimeType != MimeType.APPLICATION_UNKNOWN;
