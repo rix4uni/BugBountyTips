@@ -16,10 +16,10 @@ curl -s "https://raw.githubusercontent.com/rix4uni/scope/refs/heads/main/data/Wi
     { "bin": "unew", "install": "gocl -i github.com/rix4uni/unew" }
   ],
   "command": [
-    "for TARGET in $(cat ${INPUT});do curl -s "https://raw.githubusercontent.com/rix4uni/BugBountyData/refs/heads/main/data/${TARGET}.txt" | unew -q $TARGET.subs; cat $TARGET.subs | httpx -duc -silent -nc | unew -q $TARGET.httpx; wget -q https://raw.githubusercontent.com/rix4uni/custom-nuclei-templates/refs/heads/main/unauthenticated-jenkins-rce.yaml; cat $TARGET.httpx | nuclei -duc -silent -nc -t unauthenticated-jenkins-rce.yaml | unew $TARGET.${OUTPUT} | notify -duc -silent -id allvuln &>/dev/null; rm -rf $TARGET.subs $TARGET.httpx;done"
+    "for TARGET in $(cat ${INPUT});do curl -s \"https://raw.githubusercontent.com/rix4uni/BugBountyData/refs/heads/main/data/${TARGET}.txt\" | unew -q $TARGET.subs; cat $TARGET.subs | httpx -duc -silent -nc | unew -q $TARGET.httpx; wget -q https://raw.githubusercontent.com/rix4uni/custom-nuclei-templates/refs/heads/main/unauthenticated-jenkins-rce.yaml; cat $TARGET.httpx | nuclei -duc -silent -nc -t unauthenticated-jenkins-rce.yaml | unew $TARGET.${OUTPUT} | notify -duc -silent -id allvuln &>/dev/null; rm -rf $TARGET.subs $TARGET.httpx;done"
   ],
   "example": "garudrecon workflow kpt-jenkins -i wildcards.txt -o jenkins",
-  "description": Cheking Jenkins RCE using nuclei template"
+  "description": "Cheking Jenkins RCE using nuclei template"
 }]
 ```
 </details>
